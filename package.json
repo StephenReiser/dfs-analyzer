@@ -2,6 +2,10 @@
   "name": "dfs-results",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "11.12.0",
+    "npm": "6.9.0"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development next dev",

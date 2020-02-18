@@ -170,3 +170,4 @@ export default class Index extends Component {
 // will need to figure otu how sessions is working so other tabs can work correctly
 
 // this seems to work fine - but i think the way to get this to work correctly is wrap all pages in a HOC or wrap _document in a HOC
+

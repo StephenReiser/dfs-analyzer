@@ -7,7 +7,8 @@ const Details = () => {
     const {dfsRes, updateDfsRes} = useContext(DFSContext)
     return(
         <Layout title='details'>
-            <h1>{dfsRes[0].Sport}</h1>
+            {dfsRes ? 
+            <h1>{dfsRes[0].Sport}</h1> : null }
             {dfsRes ? 
         <NewTable myDFSResults = {dfsRes}/> : null }
         

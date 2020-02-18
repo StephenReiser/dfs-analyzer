@@ -6,7 +6,8 @@ const Chart = () => {
     const {dfsRes, updateDfsRes} = useContext(DFSContext)
     return(
         <Layout title='chart'>
-            <h1>{dfsRes[0].Sport}</h1>
+            {dfsRes ?
+            <h1>{dfsRes[0].Sport}</h1> : null }
             <h1>CHART</h1>
         </Layout>
     )

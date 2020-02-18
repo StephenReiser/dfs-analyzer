@@ -6,7 +6,9 @@ const Summary = () => {
     const {dfsRes, updateDfsRes} = useContext(DFSContext)
     return(
         <Layout title='summary'>
+            {dfsRes ? 
             <h1>{dfsRes[0].Sport}</h1>
+            : null}
             <h1>SUMMARY</h1>
         </Layout>
     )

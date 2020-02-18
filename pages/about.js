@@ -11,7 +11,8 @@ const About = () => {
         
 
        <Layout title='about'>
-            <h1>{dfsRes[0].Sport}</h1>
+           {dfsRes ?
+            <h1>{dfsRes[0].Sport}</h1> : null }
             <h1>ABOUT</h1>
         </Layout>
         

@@ -25,14 +25,16 @@ app.prepare().then(() => {
   server.use(bodyParser.json())
   server.use(
     session({
-      secret: 'geheimnis',
+      secret: process.env.SECRET,
       saveUninitialized: true,
-      store: new FileStore({ secret: 'geheimnis' }),
+      store: new FileStore({ secret: process.env.SECRET }),
       resave: false,
       rolling: true,
       cookie: { maxAge: 604800000, httpOnly: true }, // week
     })
   )
+
+  // secret was 'geheimnis
 
   server.use((req, res, next) => {
     req.firebaseServer = firebase

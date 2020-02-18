@@ -1,15 +1,3 @@
-// module.exports = {
-//     env: {
-//         apiKey: "AIzaSyDiC_8EUUMy5UlH7s6NpdesoI5ZhKr74Q0",
-//         authDomain: "dfs-analyzer-a6cf9.firebaseapp.com",
-//         databaseURL: "https://dfs-analyzer-a6cf9.firebaseio.com",
-//         projectId: "dfs-analyzer-a6cf9",
-//         storageBucket: "dfs-analyzer-a6cf9.appspot.com",
-//         messagingSenderId: "329791984458",
-//         appId: "1:329791984458:web:1b393fe1a77cc4462f67b3",
-//         measurementId: "G-5W3HD3T46F"
-//       },
-//   }
 
 
 // Responsible for setting environment variables.

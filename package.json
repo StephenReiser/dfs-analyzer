@@ -1,0 +1,30 @@
+{
+  "name": "dfs-results",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development next dev",
+    "build": "NODE_ENV=production next build",
+    "start": "NODE_ENV=production next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.9.3",
+    "@material-ui/icons": "^4.9.1",
+    "body-parser": "^1.17.1",
+    "dotenv": "8.2.0",
+    "express": "^4.14.0",
+    "express-session": "^1.15.2",
+    "firebase": "^7.6.2",
+    "firebase-admin": "^8.9.0",
+    "isomorphic-unfetch": "2.0.0",
+    "next": "latest",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-papaparse": "^2.0.1",
+    "session-file-store": "^1.0.0"
+  }
+}

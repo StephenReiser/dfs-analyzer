@@ -151,3 +151,7 @@ export default class Index extends Component {
     )
   }
 }
+
+
+
+// will need to figure otu how sessions is working so other tabs can work correctly

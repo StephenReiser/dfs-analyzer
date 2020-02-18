@@ -8,7 +8,7 @@ import DFSContext from '../components/context/context'
 
 export default class MyApp extends App {
   state = {
-    dfsRes: 'Test'
+    dfsRes: null
   }
   componentDidMount() {
     // Remove the server-side injected CSS.
@@ -18,10 +18,10 @@ export default class MyApp extends App {
     }
   }
 
-  updateDfsRes = (someWord) => {
-    console.log(someWord)
+  updateDfsRes = (anArray) => {
+    console.log(anArray)
     this.setState({
-      dfsRes: someWord
+      dfsRes: anArray
     });
   }
   render() {

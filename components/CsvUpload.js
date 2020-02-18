@@ -2,12 +2,18 @@ import React, { Component } from 'react'
  
 import { CSVReader } from 'react-papaparse'
 import Button from '@material-ui/core/Button';
+
  
 class CSVComp extends Component {
+  
+
   constructor(props) {
     super(props)
     this.fileInput = React.createRef()
   }
+
+  
+
   componentDidMount() {
     const myData = [
     {
@@ -68,24 +74,26 @@ class CSVComp extends Component {
 };
 convertDataToNumbers = (badArray) => {
   const myData = [...badArray]
-  
+  myData.pop()
   // so this mostly works but I think there is somewhere that is throwing an error - so need to put an error handler some how - also this is super stupid the way I'm doing it... no way this is effecient
   myData.map((item, i) => {
-    console.log(item, i)
-    myData[i].Entry_Key = parseInt(item.Entry_Key)
-    myData[i].Contest_Key = parseInt(item.Contest_Key)
-    myData[i].Place = parseInt(item.Place)
-    myData[i].Points = parseInt(item.Points)
-    myData[i].Winnings_Non_Ticket = parseInt(item.Winnings_Non_Ticket.slice(1)) || 0
-    myData[i].Winnings_Ticket = parseInt(item.Winnings_Ticket.slice(1)) || 0
-    myData[i].Contest_Entries = parseInt(item.Contest_Entries)
-    myData[i].Entry_Fee = parseInt(item.Entry_Fee.slice(1))
-    myData[i].Prize_Pool = parseInt(item.Prize_Pool.slice(1))
-    myData[i].Places_Paid = parseInt(item.Places_Paid)
+    
+    myData[i].Entry_Key = Number(item.Entry_Key)
+    myData[i].Contest_Key = Number(item.Contest_Key)
+    myData[i].Place = Number(item.Place)
+    myData[i].Points = Number(item.Points)
+    myData[i].Winnings_Non_Ticket = Number(item.Winnings_Non_Ticket.slice(1).replace(/,/g, ''))
+    myData[i].Winnings_Ticket = Number(item.Winnings_Ticket.slice(1).replace(/,/g, ''))
+    myData[i].Contest_Entries = Number(item.Contest_Entries)
+    myData[i].Entry_Fee = Number(item.Entry_Fee.slice(1).replace(/,/g, ''))
+    myData[i].Prize_Pool = Number(item.Prize_Pool.slice(1).replace(/,/g, ''))
+    myData[i].Places_Paid = Number(item.Places_Paid)
     
 
 
   })
+
+  
   
   console.log(myData)
   return myData

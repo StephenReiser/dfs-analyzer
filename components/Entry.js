@@ -21,22 +21,14 @@ const Entry = () => {
    
 
     return(
-        <div>
+        <>
         <Button variant="contained" color="primary" onClick = {() => updateDfsRes('Test changing state')}>
             Hello World
         </Button>
-        <CsvUpload setMyData = {setMyData}/>
-
-        {/* {myData.map(game => {
-            return(
-            <li>
-                {game.Sport}
-            </li>
-            )
-        })} */}
-        {/* <Table myDFSResults = {myData}/> */}
-        <NewTable myDFSResults = {myData}/>
-        </div>
+        <CsvUpload setMyData = {updateDfsRes}/>
+</>
+        
+        
     )
 }
 

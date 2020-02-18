@@ -10,6 +10,7 @@ import Entry from '../components/Entry'
 import { readString } from 'react-papaparse'
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/layout/Layout'
 
 
 
@@ -18,22 +19,10 @@ const Index = () => {
   
   return(
     <>
-    <Head>
-        <title>DFS Analyzer</title>
-        <meta
-          name="viewport"
-          content="initial-scale=1.0, width=device-width"
-          key="viewport"
-        />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-      </Head>
-
-      <Link href="/about">
-          <a>About Us</a>
-        </Link>
-
-    <Entry />
+    
+    <Layout>
+      <Entry />
+    </Layout>
     </>
   )
 }

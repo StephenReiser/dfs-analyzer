@@ -15,9 +15,9 @@ const DFSTableData = (props) => {
             {/* <TableCell component="th" scope="row">
             {props.name}
             </TableCell> */}
-            {Object.keys(props.data).map((keyName) => {
+            {Object.keys(props.data).map((keyName, index) => {
                 return (
-                <DFSTableCell data = {props.data[keyName]} />
+                <DFSTableCell key = {props.data.Entry_Key + keyName} data = {props.data[keyName]} />
                 )
             })}
         </TableRow>

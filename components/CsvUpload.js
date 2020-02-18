@@ -2,6 +2,8 @@ import React, { Component } from 'react'
  
 import { CSVReader } from 'react-papaparse'
 import Button from '@material-ui/core/Button';
+import TestData from './TestData'
+
 
  
 class CSVComp extends Component {
@@ -14,38 +16,13 @@ class CSVComp extends Component {
 
   
 
-  componentDidMount() {
-    const myData = [
-    {
-      amount: '$5.00',
-      test: 'test'
-    },
-    {
-      amount: '$10.00',
-      test: 'test'
-    }
-
-    
-
-  ]
-
-  const newData = [...myData]
-  
-  myData.map((item, i) => {
-    console.log(item, i)
-    newData[i].amount = parseInt(item.amount.slice(1))
-  })
-  
-  console.log(newData)
-
-  
-  }
  
   handleReadCSV = (data) => {
     console.log(data)
 
     const cleanData = this.convertDataToNumbers(this.convertToObject(data))
     this.props.setMyData(cleanData)
+    this.props.setFilterData(cleanData)
     
     
   }
@@ -116,7 +93,8 @@ convertDataToNumbers = (badArray) => {
         <Button variant="contained" color="primary" onClick={this.handleImportOffer}>
             Import
         </Button>
-       
+
+       <TestData convertToNumbers = {this.convertDataToNumbers} convertToObject = {this.convertToObject}/>
       </>
     )
   }

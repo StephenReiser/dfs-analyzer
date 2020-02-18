@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import DFSContext from '../context/context'
+import FilterOptions from './FilterOptions'
 
 
 const useStyles = makeStyles(theme => ({
@@ -79,6 +80,9 @@ export default ({ children, title = 'DFS Analyzer' }) => {
     </div>
       </nav>
     </header>
+    <div>
+      <FilterOptions />
+    </div>
 
     {children}
 

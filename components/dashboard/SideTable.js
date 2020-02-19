@@ -52,7 +52,7 @@ export default function SimpleTable(props) {
               const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
 
               return(
-            <TableRow key={row.Contest_Date_EST}>
+            <TableRow key={row.Entry_Key + 'sidetable'}>
               <TableCell component="th" scope="row" className = {classes.tableData}> 
                 {newdate}
               </TableCell>

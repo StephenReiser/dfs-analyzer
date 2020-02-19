@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'
-import CenteredGrid from './dashboard/DashboardLayout'
+import DashboardLayout from './dashboard/DashboardLayout'
 import DFSContext from './context/context'
 
 
@@ -9,6 +9,7 @@ const Dashboard = () => {
     const [buyIn, setBuyIn ] = useState(0)
     const [winnings, setWinnings ] = useState(0)
     const [profit, setProfit ] = useState(0)
+    const [largestWins, setLargestWins ] = useState(null)
     
     useEffect(() => {
         if(filteredDFSRes) {
@@ -19,6 +20,7 @@ const Dashboard = () => {
             setBuyIn(0)
             setWinnings(0)
             setProfit(0)
+            setLargestWins(null)
         }
     }, [
         filteredDFSRes
@@ -27,6 +29,7 @@ const Dashboard = () => {
     const calculateValues = (myData) => {
         let myBuyIn = 0
         let myWinnings = 0
+        const sortedData = myData.sort((a, b) => a.Winnings_Non_Ticket - b.Winnings_Non_Ticket).slice(myData.length - 5, myData.length)
 
         myData.forEach(item => {
             myBuyIn = (myBuyIn + Number(item.Entry_Fee))
@@ -38,6 +41,8 @@ const Dashboard = () => {
         setProfit(Number((myWinnings - myBuyIn).toFixed(2)).toLocaleString(undefined, {minimumFractionDigits:2}))
         setROI(((myWinnings - myBuyIn) / myBuyIn).toFixed(2))
         // console.log(myBuyIn)
+        console.log(sortedData)
+        setLargestWins(sortedData.reverse())
         // console.log(roi, buyIn, winnings, profit)
 
         
@@ -47,7 +52,7 @@ const Dashboard = () => {
     return(
 
         
-            <CenteredGrid buyIn = {buyIn} winnings = {winnings} profit = {profit} roi = {roi}/>
+            <DashboardLayout buyIn = {buyIn} winnings = {winnings} profit = {profit} roi = {roi} largestWins = {largestWins}/>
         
     )
 }

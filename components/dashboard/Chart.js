@@ -61,10 +61,14 @@ const Example = () => {
         const newDataArray = []
         let runningTotal = 0
           // console.log(filteredDFSRes)
-        const myFilteredDFSRes = [...filteredDFSRes].sort(function(a,b){
+        const myFilteredDFSRes = [...filteredDFSRes].sort(function(first,second){
+          const a = first.Contest_Date_EST.split(/-|\s|:/);
+          const actualFirstDate = new Date(a[0], a[1] -1, a[2], a[3], a[4], a[5]);
+          const b = second.Contest_Date_EST.split(/-|\s|:/);
+          const actualSecondDate = new Date(b[0], b[1] -1, b[2], b[3], b[4], b[5]);
           // Turn your strings into dates, and then subtract them
           // to get a value that is either negative, positive, or zero.
-          return new Date(a.Contest_Date_EST) - new Date(b.Contest_Date_EST);
+          return actualFirstDate - actualSecondDate;
         });
 
         // console.log(myFilteredDFSRes)

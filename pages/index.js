@@ -117,7 +117,7 @@ export default class Index extends Component {
   }
 
   handleLogin() {
-    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider())
   }
 
   handleLogout() {

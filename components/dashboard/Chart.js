@@ -60,7 +60,16 @@ const Example = () => {
         if (filteredDFSRes) {
         const newDataArray = []
         let runningTotal = 0
-        filteredDFSRes.reverse().forEach(game => {
+          console.log(filteredDFSRes)
+        const myFilteredDFSRes = [...filteredDFSRes].sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(a.Contest_Date_EST) - new Date(b.Contest_Date_EST);
+        });
+
+        console.log(myFilteredDFSRes)
+        
+        myFilteredDFSRes.forEach(game => {
             // const date = new Date(game.Contest_Date_EST)
             //   const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
 
@@ -76,9 +85,10 @@ const Example = () => {
                   date: newdate,
                   winnings: Number(runningTotal.toFixed(2))
               }
+              console.log(newObj)
               newDataArray.push(newObj)
         })
-
+       
         console.log(newDataArray)
         setData(newDataArray)
     }

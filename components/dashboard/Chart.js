@@ -55,19 +55,19 @@ const Example = () => {
         //   if(filteredDFSRes) {
         //     console.log(filteredDFSRes)
         //   }
-        console.log(data)
+        // console.log(data)
         off =  gradientOffset();
         if (filteredDFSRes) {
         const newDataArray = []
         let runningTotal = 0
-          console.log(filteredDFSRes)
+          // console.log(filteredDFSRes)
         const myFilteredDFSRes = [...filteredDFSRes].sort(function(a,b){
           // Turn your strings into dates, and then subtract them
           // to get a value that is either negative, positive, or zero.
           return new Date(a.Contest_Date_EST) - new Date(b.Contest_Date_EST);
         });
 
-        console.log(myFilteredDFSRes)
+        // console.log(myFilteredDFSRes)
         
         myFilteredDFSRes.forEach(game => {
             // const date = new Date(game.Contest_Date_EST)
@@ -85,11 +85,11 @@ const Example = () => {
                   date: newdate,
                   winnings: Number(runningTotal.toFixed(2))
               }
-              console.log(newObj)
+              // console.log(newObj)
               newDataArray.push(newObj)
         })
        
-        console.log(newDataArray)
+        // console.log(newDataArray)
         setData(newDataArray)
     }
       }, [filteredDFSRes])

@@ -5,14 +5,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import SideTable from './SideTable'
-import Chart from './Chart'
+import GameTypeTable from './GameTypeTable'
 
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    // height:300
-    height: '100%'
+    height:'100%'
   },
   bullet: {
     display: 'inline-block',
@@ -30,7 +28,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function OutlinedCard(props) {
+const SideGameType = (props) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
@@ -40,11 +38,14 @@ export default function OutlinedCard(props) {
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {props.description}
         </Typography>
+        
         <Typography variant="body2" component="div" >
-          <Chart />
+          <GameTypeTable className = {classes.table} topWinnings = {props.data}/>
         </Typography>
       </CardContent>
       
     </Card>
   );
 }
+
+export default SideGameType

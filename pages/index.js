@@ -23,3 +23,10 @@ const Index = () => {
 }
 
 export default Index
+
+
+
+
+// Things to work on - more filters - for now I think year is the first one - can probable eventually add stuff like contest size or game type
+
+// add in one more summary by game type - not sure what I can find here but H2H, small leagues (3-10) seem easy enough to figure out. Not sure if things have the word 'Double up' or whatever

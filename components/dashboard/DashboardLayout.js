@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from './Card'
 import SideCard from './SideCard'
 import ChartCard from './ChartCard'
+import SideGameType from './SideGameType'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,15 +45,22 @@ export default function CenteredGrid(props) {
               <Card description = {'New Profit/Loss'} data = {props.profit}/>
           {/* </Paper> */}
         </Grid>
-        <Grid item xs={12} md={3} lg={3} sm={4}>
-          {/* <Paper className={classes.paper}> */}
+        <Grid container item xs={12} spacing={3}>
+          <Grid container item xs={12} md={12} lg={3} sm={12} spacing={3}>
+            {/* <Paper className={classes.paper}> */}
+            <Grid item xs={12} md={6} sm = {6} lg={12}>
               <SideCard description = {'Top Wins'} data = {props.largestWins}/>
-          {/* </Paper> */}
-        </Grid>
-        <Grid item xs={12} md={9} lg={9} sm={8}>
-          {/* <Paper className={classes.paper}> */}
-              <ChartCard description = {`Chart`} />
-          {/* </Paper> */}
+            </Grid>
+            <Grid item xs={12} md={6} sm = {6} lg = {12} >
+              <SideGameType description = {'Game Type'} />
+            </Grid>
+            {/* </Paper> */}
+          </Grid>
+          <Grid item xs={12} md={12} lg={9} sm={12} >
+            {/* <Paper className={classes.paper}> */}
+                <ChartCard description = {`Chart`} />
+            {/* </Paper> */}
+          </Grid>
         </Grid>
        
       </Grid>

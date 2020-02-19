@@ -27,7 +27,7 @@ export default function SimpleSelect() {
 
     // Material UI default settings
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    const [sport, setSport] = React.useState('');
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
@@ -36,7 +36,7 @@ export default function SimpleSelect() {
   }, []);
 
   const handleChange = event => {
-    setAge(event.target.value);
+    setSport(event.target.value);
     
     // filtering our data based on the inputs from the select
     if (event.target.value === ""){
@@ -66,7 +66,7 @@ export default function SimpleSelect() {
         <Select
           labelId="sport-select-label"
           id="sport-select"
-          value={age}
+          value={sport}
           onChange={handleChange}
           labelWidth={labelWidth}
           name={`Sport`}
@@ -77,6 +77,7 @@ export default function SimpleSelect() {
           <MenuItem value={`NBA`} >NBA</MenuItem>
           <MenuItem value={`NFL`} >NFL</MenuItem>
           <MenuItem value={`MLB`} >MLB</MenuItem>
+          <MenuItem value={`GOLF`} >GOLF</MenuItem>
         </Select>
       </FormControl>
       

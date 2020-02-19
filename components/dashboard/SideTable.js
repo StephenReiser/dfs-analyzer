@@ -48,8 +48,12 @@ export default function SimpleTable(props) {
         </TableHead>
         <TableBody>
           {props.topWinnings && props.topWinnings.map(row => {
-              const date = new Date(row.Contest_Date_EST)
-              const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+            var a = row.Contest_Date_EST.split(/-|\s|:/);
+            var date = new Date(a[0], a[1] -1, a[2], a[3], a[4], a[5]);
+              // const date = new Date(row.Contest_Date_EST)
+              // const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+
+              const newdate = date.toLocaleDateString()
 
               return(
             <TableRow key={row.Entry_Key + 'sidetable'}>

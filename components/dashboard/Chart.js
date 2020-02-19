@@ -61,8 +61,16 @@ const Example = () => {
         const newDataArray = []
         let runningTotal = 0
         filteredDFSRes.reverse().forEach(game => {
-            const date = new Date(game.Contest_Date_EST)
-              const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+            // const date = new Date(game.Contest_Date_EST)
+            //   const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+
+            var a = game.Contest_Date_EST.split(/-|\s|:/);
+            var date = new Date(a[0], a[1] -1, a[2], a[3], a[4], a[5]);
+              // const date = new Date(row.Contest_Date_EST)
+              // const newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+
+              const newdate = date.toLocaleDateString()
+
               runningTotal += (-game.Entry_Fee + game.Winnings_Non_Ticket + game.Winnings_Ticket)
               const newObj = {
                   date: newdate,

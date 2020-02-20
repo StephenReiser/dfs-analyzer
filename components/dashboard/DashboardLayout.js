@@ -52,7 +52,7 @@ export default function CenteredGrid(props) {
               <SideCard description = {'Top Wins'} data = {props.largestWins}/>
             </Grid>
             <Grid item xs={12} md={6} sm = {6} lg = {12} >
-              <SideGameType description = {'Game Type'} />
+              <SideGameType/>
             </Grid>
             {/* </Paper> */}
           </Grid>

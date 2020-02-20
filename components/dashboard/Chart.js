@@ -69,6 +69,7 @@ const Example = () => {
           // Turn your strings into dates, and then subtract them
           // to get a value that is either negative, positive, or zero.
           return actualFirstDate - actualSecondDate;
+          // doing it this way so we can clean the dates so it works in safari...rahter than just return new Date(first.Context_Date_EST) - new Date(second.Contest_Date_EST)
         });
 
         // console.log(myFilteredDFSRes)
@@ -99,7 +100,7 @@ const Example = () => {
       }, [filteredDFSRes])
   
     return (
-        <ResponsiveContainer width='100%' aspect={4.0/1.5}>
+        <ResponsiveContainer width='100%' aspect={4.0/2.0}>
             <AreaChart
                 // width={`100%`}
                 // height={400}

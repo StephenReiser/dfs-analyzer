@@ -17,27 +17,20 @@ const useStyles = makeStyles({
   tableData: {
       fontSize: 12,
       padding: 6,
+  },
+  sumLine: {
+    fontWeight: 'bold'
   }
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 const GameTypeTable = (props) => {
   const classes = useStyles();
-  const { filteredDFSRes } = useContext(DFSContext)
+  
   const [summarizedData, setSummarizedData] = useState(null)
 
-  const summarizeData = (arrayOfObjs, name) => {
+  const summarizeData = (arrayOfObjs, name, boldOption) => {
     let totalBuyIn = 0
     let totalWinnings = 0
     
@@ -54,7 +47,8 @@ const GameTypeTable = (props) => {
       buyIn: totalBuyIn,
       winnings: totalWinnings,
       profit: totalWinnings - totalBuyIn,
-      roi: (totalWinnings - totalBuyIn) / totalBuyIn
+      roi: (totalWinnings - totalBuyIn) / totalBuyIn,
+      bold: boldOption
 
     }
     return objectToReturn
@@ -63,16 +57,16 @@ const GameTypeTable = (props) => {
 
   useEffect(() => {
 
-    if (filteredDFSRes) {
-      const singleEntry = filteredDFSRes.filter((game) => {
+    if (props.gppData) {
+      const singleEntry = props.gppData.filter((game) => {
         return game.Entry.includes('[Single Entry]') 
       })
       // First filteres out single Entry
-      const threeEntry = filteredDFSRes.filter((game) => {
+      const threeEntry = props.gppData.filter((game) => {
         return game.Entry.includes('[3 Entry Max]') 
       })
       // second filters out 3 entry max
-      const theRest = filteredDFSRes.filter((game) => {
+      const theRest = props.gppData.filter((game) => {
         return !game.Entry.includes('[3 Entry Max]')  && !game.Entry.includes('[Single Entry]') 
       })
       // last is the remainder
@@ -80,13 +74,13 @@ const GameTypeTable = (props) => {
       summarizeData(singleEntry)
 
       
-      setSummarizedData([summarizeData(singleEntry, "Single Entry"), summarizeData(threeEntry, "3 Entry Max"), summarizeData(theRest, "MME")])
+      setSummarizedData([summarizeData(singleEntry, "Single Entry", false), summarizeData(threeEntry, "3 Entry Max", false), summarizeData(theRest, "MME", false), summarizeData(props.gppData, "Total", true)])
     } else {
       setSummarizedData(null)
 
     }
     
-  }, [filteredDFSRes])
+  }, [props.gppData])
 
   return (
     <TableContainer component={Paper}>
@@ -106,13 +100,20 @@ const GameTypeTable = (props) => {
            
               return(
             <TableRow key={row.description + 'sideSummary'}>
-              <TableCell component="th" scope="row" className = {classes.tableData}> 
+              <TableCell component="th" scope="row" className = {`${classes.tableData} ${row.bold ? classes.sumLine : ''}`}>
                 {row.description}
               </TableCell>
-              <TableCell align="right" className = {classes.tableData}>{row.buyIn.toLocaleString(undefined, {minimumFractionDigits:2})}</TableCell>
-              <TableCell align="right" className = {classes.tableData}>{row.winnings.toLocaleString(undefined, {minimumFractionDigits:2})}</TableCell>
-              <TableCell align="right" className = {classes.tableData}>{row.profit.toLocaleString(undefined, {minimumFractionDigits:2})}</TableCell>
-              <TableCell align="right" className = {classes.tableData}>{row.roi.toFixed(2)}</TableCell>
+              <TableCell align="right" className = {`${classes.tableData} ${row.bold ? classes.sumLine : ''}`}> {row.buyIn.toLocaleString(undefined, {minimumFractionDigits:2})}
+              </TableCell>
+              <TableCell align="right" className = {`${classes.tableData} ${row.bold ? classes.sumLine : ''}`}>
+                {row.winnings.toLocaleString(undefined, {minimumFractionDigits:2})}
+              </TableCell>
+              <TableCell align="right" className = {`${classes.tableData} ${row.bold ? classes.sumLine : ''}`}>
+                {row.profit.toLocaleString(undefined, {minimumFractionDigits:2})}
+              </TableCell>
+              <TableCell align="right" className = {`${classes.tableData} ${row.bold ? classes.sumLine : ''}`}>
+                {row.roi.toFixed(2)}
+              </TableCell>
             </TableRow>
               )
 })}

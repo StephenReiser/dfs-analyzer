@@ -14,3 +14,9 @@ const FilterMenu = () => {
 }
 
 export default FilterMenu
+
+
+// next steps are to add a year and then add in showdown/classic. probably worth later putting a filter for like Cash/GPP/H2H just to see the chart
+
+
+// Not really related - but need to add in some fixes for the Cash/GPP summary since they look goofy with missing data

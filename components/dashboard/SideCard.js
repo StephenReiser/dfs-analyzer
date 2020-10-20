@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import SideTable from './SideTable'
+import FinishPosition from './SideTableFinishPositions'
 
 const useStyles = makeStyles({
   root: {
@@ -38,23 +39,23 @@ export default function OutlinedCard(props) {
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {props.description}
         </Typography>
-        {/* <Typography variant="h5" component="h2">
-          {props.data && props.data.map(data => {
-              return(
-              <li>{data.Sport}</li>
-              )
-          })}
-        </Typography> */}
-        {/* <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography> */}
         <Typography variant="body2" component="div" >
           <SideTable className = {classes.table} topWinnings = {props.data}/>
         </Typography>
+        {/* Finish Position */}
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          {props.description}
+        </Typography>
+        <Typography variant="body2" component="div" >
+          <FinishPosition className = {classes.table} topWinnings = {props.data}/>
+        </Typography>
+        
       </CardContent>
       {/* <CardActions>
         <Button size="small">Learn More</Button>
       </CardActions> */}
     </Card>
+
+    
   );
 }

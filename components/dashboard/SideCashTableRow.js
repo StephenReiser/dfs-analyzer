@@ -32,7 +32,7 @@ const SideTableRow = (props) => {
               <TableCell align="right" className = {`${classes.tableData} ${props.bold ? classes.sumLine : ''}`}> {props.buyIn.toLocaleString(undefined, {minimumFractionDigits:2})}</TableCell>
               <TableCell align="right" className = {`${classes.tableData} ${props.bold ? classes.sumLine : ''}`}> {props.winnings.toLocaleString(undefined, {minimumFractionDigits:2})}</TableCell>
               <TableCell align="right" className = {`${classes.tableData} ${props.bold ? classes.sumLine : ''}`}> {props.profit.toLocaleString(undefined, {minimumFractionDigits:2})}</TableCell>
-              <TableCell align="right" className = {`${classes.tableData} ${props.bold ? classes.sumLine : ''}`}> {props.roi.toFixed(2)}</TableCell>
+              <TableCell align="right" className = {`${classes.tableData} ${props.bold ? classes.sumLine : ''}`}> {`${Math.round(props.roi * 100)}%`}</TableCell>
             </TableRow>
     )
 }

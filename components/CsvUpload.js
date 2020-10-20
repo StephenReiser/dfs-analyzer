@@ -65,6 +65,12 @@ convertDataToNumbers = (badArray) => {
     myData[i].Entry_Fee = Number(item.Entry_Fee.slice(1).replace(/,/g, ''))
     myData[i].Prize_Pool = Number(item.Prize_Pool.slice(1).replace(/,/g, ''))
     myData[i].Places_Paid = Number(item.Places_Paid)
+    myData[i].FinishPerc = Number(item.Place)/Number(item.Contest_Entries)
+    if (Number(item.Place) <= Number(item.Places_Paid)) {
+      myData[i].Cashed = true
+    } else {
+      myData[i].Cashed = false
+    }
     
 
 

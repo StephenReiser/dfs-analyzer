@@ -59,22 +59,26 @@ const GameTypeTable = (props) => {
 
     if (props.gppData) {
       const singleEntry = props.gppData.filter((game) => {
-        return game.Entry.includes('[Single Entry]') 
+        return game.Entry.includes('Single Entry') 
       })
       // First filteres out single Entry
       const threeEntry = props.gppData.filter((game) => {
-        return game.Entry.includes('[3 Entry Max]') 
+        return game.Entry.includes('3 Entry Max') 
+      })
+
+      const twentyEntry = props.gppData.filter((game) => {
+        return game.Entry.includes('20 Entry Max') 
       })
       // second filters out 3 entry max
       const theRest = props.gppData.filter((game) => {
-        return !game.Entry.includes('[3 Entry Max]')  && !game.Entry.includes('[Single Entry]') 
+        return !game.Entry.includes('3 Entry Max')  && !game.Entry.includes('Single Entry') && !game.Entry.includes('20 Entry Max') 
       })
       // last is the remainder
 
       summarizeData(singleEntry)
 
       
-      setSummarizedData([summarizeData(singleEntry, "Single Entry", false), summarizeData(threeEntry, "3 Entry Max", false), summarizeData(theRest, "MME", false), summarizeData(props.gppData, "Total", true)])
+      setSummarizedData([summarizeData(singleEntry, "Single Entry", false), summarizeData(threeEntry, "3 Entry Max", false), summarizeData(twentyEntry, "20 Entry Max", false), summarizeData(theRest, "MME", false), summarizeData(props.gppData, "Total", true)])
     } else {
       setSummarizedData(null)
 
@@ -112,7 +116,7 @@ const GameTypeTable = (props) => {
                 {row.profit.toLocaleString(undefined, {minimumFractionDigits:2})}
               </TableCell>
               <TableCell align="right" className = {`${classes.tableData} ${row.bold ? classes.sumLine : ''}`}>
-                {row.roi.toFixed(2)}
+                {`${Math.round(row.roi * 100)}%`}
               </TableCell>
             </TableRow>
               )

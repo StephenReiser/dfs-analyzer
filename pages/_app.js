@@ -11,6 +11,9 @@ import DFSContext from '../components/context/context'
 const MyFunctionalApp = ({children}) => {
   const [dfsRes, updateDfsRes] = useState(null)
   const [filteredDFSRes, setFilteredDFSRes] = useState(null)
+  const [sportFilter, setSportFilter] = useState('')
+  const [yearFilter, setYearFilter] = useState('')
+  const [gameFilter, setGameFilter] = useState('')
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -21,7 +24,7 @@ const MyFunctionalApp = ({children}) => {
   }, [])
 
   return(
-    <DFSContext.Provider value = {{dfsRes, updateDfsRes, filteredDFSRes, setFilteredDFSRes }}>
+    <DFSContext.Provider value = {{dfsRes, updateDfsRes, filteredDFSRes, setFilteredDFSRes, sportFilter, setSportFilter, yearFilter, setYearFilter, gameFilter, setGameFilter }}>
         <Head>
           <title>My page</title>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />

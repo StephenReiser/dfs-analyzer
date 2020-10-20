@@ -105,6 +105,12 @@ console.log(props)
           </TableRow>
         </TableHead>
         <TableBody>
+            <TableRow key = 'totalGames'>
+                <TableCell component="th" scope="row" className = {classes.tableData}> 
+                    Total Games
+                </TableCell>
+                <TableCell align="right" className = {classes.tableData}>{finishPosition.games}</TableCell>
+            </TableRow>
             <TableRow key = 'cashRate'>
                 <TableCell component="th" scope="row" className = {classes.tableData}> 
                     Cash Rate

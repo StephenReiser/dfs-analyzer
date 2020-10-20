@@ -44,7 +44,7 @@ export default function OutlinedCard(props) {
         </Typography>
         {/* Finish Position */}
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.description}
+          {'Summary by Finish Position'}
         </Typography>
         <Typography variant="body2" component="div" >
           <FinishPosition className = {classes.table} topWinnings = {props.data}/>

@@ -73,6 +73,7 @@ const Example = () => {
         });
 
         // console.log(myFilteredDFSRes)
+        const myData = {}
         
         myFilteredDFSRes.forEach(game => {
             // const date = new Date(game.Contest_Date_EST)
@@ -86,16 +87,43 @@ const Example = () => {
               const newdate = date.toLocaleDateString()
 
               runningTotal += (-game.Entry_Fee + game.Winnings_Non_Ticket + game.Winnings_Ticket)
-              const newObj = {
-                  date: newdate,
-                  winnings: Number(runningTotal.toFixed(2))
+              if (myData[newdate]) {
+                myData[newdate] += (-game.Entry_Fee + game.Winnings_Non_Ticket + game.Winnings_Ticket)
+              } else {
+                myData[newdate] = (-game.Entry_Fee + game.Winnings_Non_Ticket + game.Winnings_Ticket)
               }
-              // console.log(newObj)
-              newDataArray.push(newObj)
+              // const newObj = {
+              //     date: newdate,
+              //     winnings: Number(runningTotal.toFixed(2))
+              // }
+              // // console.log(newObj)
+              // newDataArray.push(newObj)
+              
         })
+        for (let key in myData) {
+          const myDate = new Date(key);
+          
+          const myObj = {
+            date: myDate.toLocaleDateString(),
+            winnings: Number(myData[key])
+          }
+          newDataArray.push(myObj)
+        }
+        const finalDataArray = []
+        let totalWinnings = 0
+        for (let i = 0; i < newDataArray.length; i++) {
+          
+          totalWinnings += newDataArray[i].winnings
+          const myObject = {
+            date: newDataArray[i].date,
+            winnings: Math.round(totalWinnings *100)/100
+          }
+          finalDataArray.push(myObject)
+            
+        }
        
-        // console.log(newDataArray)
-        setData(newDataArray)
+        console.log('chart data', finalDataArray)
+        setData(finalDataArray)
     }
       }, [filteredDFSRes])
   

@@ -30,7 +30,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-papaparse": "^2.0.1",
-    "recharts": "^2.0.0-beta.1",
+    "recharts": "^2.1.14",
     "session-file-store": "^1.0.0"
   }
 }

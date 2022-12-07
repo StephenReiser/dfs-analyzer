@@ -19,9 +19,9 @@
   "dependencies": {
     "@material-ui/core": "^4.9.3",
     "@material-ui/icons": "^4.9.1",
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.20.1",
     "dotenv": "8.2.0",
-    "express": "^4.14.0",
+    "express": "^4.18.2",
     "express-session": "^1.15.2",
     "firebase": "^7.6.2",
     "firebase-admin": "^8.9.0",
